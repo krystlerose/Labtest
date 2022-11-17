@@ -28,6 +28,16 @@ services:
     volumes:
       - ./Question:/var/www/git
 
+  sonarqube:
+        build:
+            context: ./sonarqube
+            dockerfile: Dockerfile
+        container_name: sonarqube
+        environment:
+          - "SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true"
+        ports:
+          - "9000:9000"
+
 volumes:
   jenkins_data:
     driver: local
